@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
 class LoginScreenContrroler extends GetxController {
   static LoginScreenContrroler instance = Get.find();
+  User? user = FirebaseAuth.instance.currentUser;
   // TextEditingController for Email and Password
 
   TextEditingController emailController = TextEditingController();
@@ -61,6 +63,7 @@ class LoginScreenContrroler extends GetxController {
     required String password,
     required String fullname,}) async {
     bool status = false;
+
     try {
       final credential =
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -73,7 +76,8 @@ class LoginScreenContrroler extends GetxController {
           "name": fullname,
           "email": email,
           "password": password,
-          "uid": currentUser.uid
+          "uid": currentUser.uid,
+          // "firebasetoken":token,
         };
         await FirebaseChatCore.instance.createUserInFirestore(
             types.User(
@@ -83,6 +87,9 @@ class LoginScreenContrroler extends GetxController {
               // lastName: _lastName,
               metadata: userProfileData
             ));
+        String? token=await FirebaseMessaging.instance.getToken();
+        DocumentReference urf=FirebaseFirestore.instance.collection("users").doc(currentUser.uid??"");
+        urf.update({"firebasetoken":token});
         // DocumentReference currentUserRefrence = userRefrence.doc(currentUser.uid);
         // Map<String, dynamic> userProfilesData = {
         //   "name": fullname,
@@ -105,9 +112,14 @@ class LoginScreenContrroler extends GetxController {
     return status;
   }
 
-  void login({required String emailtext,required String passwordtext}){
+  Future login({required String emailtext,required String passwordtext})async{
+
     auth.signInWithEmailAndPassword(email: emailtext, password: passwordtext)
-        .then((value) {
+        .then((value) async{
+      User? user = FirebaseAuth.instance.currentUser;
+      String? token=await FirebaseMessaging.instance.getToken();
+      DocumentReference userrefrence=FirebaseFirestore.instance.collection("users").doc(user!.uid);
+      userrefrence.update({"firebasetoken":token});
       //  utils().toastmessage(value.user!.email.toString());
       Get.defaultDialog(title:"Status",content: Text("Successfull Login") );
       Get.to(()=>HomeScreen());

@@ -32,16 +32,16 @@ import '../Models/user_model.dart';
 //   );
 // }
 
-class ChatPage extends StatefulWidget {
+class ChatPages extends StatefulWidget {
   final UsersModel? userdetail;
   final types.User receiverUser;
-  const ChatPage({super.key, this.userdetail, required this.receiverUser});
+  const ChatPages({super.key, this.userdetail, required this.receiverUser});
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<ChatPages> createState() => _ChatPagesState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatPagesState extends State<ChatPages> {
   List<types.Message> _messages = [];
   late types.User _user;
   // final _user = const types.User(

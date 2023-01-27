@@ -92,6 +92,8 @@ class CreatePostController extends GetxController {
         => print("Successfully add to firestore"))
             .onError((error, stacktrace)
         =>print("Error $error"));
+
+
         // try {
         //   DocumentReference currentPostReference = postReference.doc(uid);
         //   await currentPostReference.update({"postImageUrl": imagePostUrl});

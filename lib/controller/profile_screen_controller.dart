@@ -146,11 +146,9 @@ class ImagePickerController extends GetxController {
                   imageUrl: imagesUrl,
                   )
           );
-          ///userImageUrl Update in post
-          CollectionReference currentUserPostRefrence = FirebaseFirestore.instance.collection("post");
-          QuerySnapshot ref=await currentUserPostRefrence.where("uid", isEqualTo: uid).get();
 
-          ///ProfileImageUrl Update in post
+          // CollectionReference cpu=FirebaseFirestore.instance.collection("post");
+          // await cpu.doc(uid).update({"userImageUrl": imagesUrl});
           DocumentReference currentUserReference = userReference.doc(uid);
           await currentUserReference.update({"profileImageUrl":imagesUrl});
           return true;

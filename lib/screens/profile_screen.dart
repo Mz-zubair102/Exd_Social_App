@@ -88,6 +88,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             height: 160,
                                             decoration: BoxDecoration(
                                                 color: Colors.cyan.shade100,
+                                                image: DecorationImage(
+                                                  image: NetworkImage(userdetail.profileImageUrl),
+                                                  fit: BoxFit.fill
+                                                ),
                                                 border: Border.all(
                                                     color: Colors.grey, width: 1),
                                                 boxShadow: [
@@ -101,9 +105,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     spreadRadius: 0.5,
                                                   ),
                                                 ]),
-                                            child:userdetail.profileImageUrl !=null? Image.network(
-                                                userdetail.coverImageUrl,
-                                                fit: BoxFit.fill):Center(child: Icon(Icons.camera_alt_rounded,size: 32,color:Colors.white),)
+                                            // child:userdetail.profileImageUrl !=null? Image.network(
+                                            //     userdetail.coverImageUrl,
+                                            //     fit: BoxFit.fill):Center(child: Icon(Icons.camera_alt_rounded,size: 32,color:Colors.white),)
                                         )
                                     ),
                                     Positioned(
@@ -137,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             "Edit Cover Photo",
                                             style: TextStyle(
                                                 fontSize: 16,
-                                                color: Colors.white,
+                                                color: Colors.green,
                                                 // color: Colors.blue.withOpacity(0.6),
                                                 fontWeight: FontWeight.bold),
                                           ),

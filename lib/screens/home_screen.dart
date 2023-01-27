@@ -61,11 +61,19 @@ class _HomeScreenState extends State<HomeScreen> {
   // }
   @override
   Widget build(BuildContext context) {
+
     return FutureBuilder(
         future: uerRefrence.doc(user!.uid).get(),
         builder:
             (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasError) {
+            // return Scaffold(
+            //   body: Center(
+            //     child: CupertinoActivityIndicator(
+            //       color: Color.fromARGB(255, 248, 101, 148),
+            //     ),
+            //   ),
+            // );
             return Text("Something went wrong");
           }
           if (snapshot.hasData && !snapshot.data!.exists) {
@@ -545,7 +553,7 @@ class _HomeScreenState extends State<HomeScreen> {
             //
             // );
           }
-          return Center(child: Text("loading"));
+          return Scaffold(body:Center(child: CircularProgressIndicator()));
         });
   }
 }

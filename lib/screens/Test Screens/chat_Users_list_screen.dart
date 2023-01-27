@@ -242,7 +242,7 @@ class _ChatUsersListScreenState extends State<ChatUsersListScreen> {
                                         imageUrl: userdetail.profileImageUrl,
                                       );
                                       Get.to(() =>
-                                          ChatPage(
+                                          ChatPages(
                                             // userdetail: userdetail,
                                             receiverUser: _user,
                                           ));

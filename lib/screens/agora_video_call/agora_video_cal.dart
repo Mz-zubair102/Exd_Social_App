@@ -59,21 +59,20 @@ late final AgoraClient client;
             AgoraVideoViewer(
               client: client,
               layoutType: Layout.floating,
-            showAVState: true,
-              showNumberOfUsers: true,
-              floatingLayoutContainerHeight: 200,
-              floatingLayoutContainerWidth: 200,
-              floatingLayoutMainViewPadding: EdgeInsets.all(8),
-              disabledVideoWidget: Container(
-
-                decoration: BoxDecoration(
-                    color: Colors.cyan,
-                  image: DecorationImage(
-                    image: NetworkImage(widget.room!.imageUrl.toString()),
-                    fit:BoxFit.fill
-                  )
-                ),
-              ),
+            // showAVState: true,
+            //   showNumberOfUsers: true,
+            //   floatingLayoutContainerHeight: 200,
+            //   floatingLayoutContainerWidth: 200,
+            //   floatingLayoutMainViewPadding: EdgeInsets.all(8),
+            //   disabledVideoWidget: Container(
+            //     decoration: BoxDecoration(
+            //         color: Colors.cyan,
+            //       image: DecorationImage(
+            //         image: NetworkImage(widget.room!.imageUrl.toString()),
+            //         fit:BoxFit.fill
+            //       )
+            //     ),
+            //   ),
               enableHostControls: true, // Add this to enable host controls
             ),
             AgoraVideoButtons(

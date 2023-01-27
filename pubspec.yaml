@@ -57,7 +57,7 @@ dependencies:
   cloud_firestore: ^4.3.0
   firebase_auth: ^4.2.4
   #animated_text_kit: ^4.2.2
-  #google_sign_in: ^5.4.2
+  google_sign_in: ^5.4.3
   #flutter_facebook_auth: ^5.0.7
   #flutter_facebook_keyhash: ^0.0.4
   #country_picker: ^2.0.19
@@ -70,9 +70,13 @@ dependencies:
   intl: ^0.17.0
   #agora_uikit
   agora_uikit: ^1.1.2
-  agora_rtc_engine: ^6.1.0
+#  agora_rtc_engine: ^6.1.0
+  #Firebase Messaging
+  firebase_messaging: ^14.2.1
+
   #Dynamics link
   firebase_dynamic_links: ^5.0.11
+  ffi: ^2.0.1
 
 dev_dependencies:
   flutter_test:
